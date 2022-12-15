@@ -17,11 +17,11 @@ jobs:
         run: docker build . --file Dockerfile -t riobener/user-service:latest
       #Test container
       - name: Run Docker Container
-        run: docker run -p 8081:8081 -d riobener/user-service:latest
+        run: docker run -p 8081:8081 --net="host" -d riobener/user-service:latest
       - name: Docker ps
         run: docker ps
       - name: CURL
-        run: curl http://app:8081/users/health
+        run: curl http://localhost:8081/users/health
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
