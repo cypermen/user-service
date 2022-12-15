@@ -1,6 +1,11 @@
 import requests
+import socket
 
-api = 'http://my_service:8081/users'
+hostname = socket.gethostname()
+
+ip_address = socket.gethostbyname(hostname)
+
+api = f'http://{ip_address}:8081/users'
 
 def test_health():
     response = requests.get(f'{api}/health', verify=False)
