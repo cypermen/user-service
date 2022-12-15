@@ -2,7 +2,7 @@ import requests
 
 api = 'http://localhost:8081/users'
 
-headers ={
+headers = {
     'Connection': 'keep-alive',
     'Cache-Control': 'max-age=0',
     'Upgrade-Insecure-Requests': '1',
@@ -12,18 +12,22 @@ headers ={
     'Accept-Encoding': 'gzip, deflate, lzma, sdch',
     'Accept-Language': 'ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4'
 }
+
+
 def test_user_empty_get():
+    s = requests.Session()
     id = '7bd047cb-a57e-412c-9d83-81c50e3e3902'
-    response = requests.get(f'{api}/{id}', headers=headers)
+    response = s.get(f'{api}/{id}', headers=headers)
     assert response.status_code == 200
 
 
 def test_user_save_and_get():
+    s = requests.Session()
     parameters = "?name=Benjamin&departmentId=7bd047cb-a57e-412c-9d83-81c50e3e3902"
-    response = requests.post(f'{api}/{parameters}',headers=headers)
+    response = s.post(f'{api}/{parameters}', headers=headers)
     assert response.status_code == 200
     assert response.json().get('name') == 'Benjamin'
     createdUserId = response.json().get('id')
-    responseUser = requests.get(f'{api}/{createdUserId}',headers=headers)
+    responseUser = s.get(f'{api}/{createdUserId}', headers=headers)
     assert responseUser.status_code == 200
     assert responseUser.json().get('name') == 'Benjamin'
