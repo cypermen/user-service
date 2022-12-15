@@ -1,6 +1,6 @@
 import requests
 
-api = 'http://user-service:8081/users'
+api = 'http://localhost:8081/users'
 
 def test_health():
     response = requests.get(f'{api}/health')
