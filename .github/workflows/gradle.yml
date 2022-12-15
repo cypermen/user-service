@@ -26,6 +26,8 @@ jobs:
         run: pip install pytest
       - name: Install requests
         run: pip install requests
+      - name: sleep
+        run: sleep 30
       - name: Run tests
         run: pytest
 
