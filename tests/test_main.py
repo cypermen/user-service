@@ -1,6 +1,6 @@
 import requests
 
-api = 'http://localhost:8081/users'
+api = 'http://127.0.0.1:8081/users'
 
 def test_health():
     response = requests.get(f'{api}/health', verify=False)
@@ -8,7 +8,7 @@ def test_health():
 
 def test_user_empty_get():
     id = '7bd047cb-a57e-412c-9d83-81c50e3e3902'
-    response = requests.get(f'{api}/{id}')
+    response = requests.get(f'{api}/{id}', verify=False)
     assert response.status_code == 200
     assert len(response.json()) == 0
 
