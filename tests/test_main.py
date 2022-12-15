@@ -1,6 +1,6 @@
 import requests
 
-api = 'http://127.0.0.1:8081/users'
+api = 'http://my_service:8081/users'
 
 def test_health():
     response = requests.get(f'{api}/health', verify=False)
