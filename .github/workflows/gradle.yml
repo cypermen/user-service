@@ -18,8 +18,6 @@ jobs:
       #Test container
       - name: Run Docker Container
         run: docker run -p 8081:8081 -d riobener/user-service:latest
-      - name: sleep
-        run: sleep 10
       - name: Docker ps
         run: docker ps
       - name: CURL
