@@ -17,7 +17,7 @@ jobs:
         run: docker build . --file Dockerfile -t riobener/user-service:latest
       #Test container
       - name: Run Docker Container
-        run: docker run -p 8081:8080 -d riobener/user-service:latest
+        run: docker run -p 8081:8081 -d riobener/user-service:latest
       - name: Docker ps
         run: docker ps
       - name: CURL
