@@ -11,7 +11,7 @@ def test_user_empty_get():
 
 def test_user_save_and_get():
     s = requests.Session()
-    parameters = "?name=BENNNNN&departmentId=7bd047cb-a57e-412c-9d83-81c50e3e3902"
+    parameters = "?name=Benjamin&departmentId=7bd047cb-a57e-412c-9d83-81c50e3e3902"
     response = s.post(f'{api}/{parameters}')
     assert response.status_code == 200
     assert response.json().get('name') == 'Benjamin'
