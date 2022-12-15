@@ -6,6 +6,6 @@ RUN gradle bootJar --no-daemon
 FROM openjdk:17
 EXPOSE 8081
 RUN mkdir /app
-COPY --from=build /home/gradle/src/build/libs/*.jar app.jar
+COPY --from=build /home/gradle/src/build/libs/*.jar /app/spring-boot-application.jar
 
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "/app/spring-boot-application.jar"]
