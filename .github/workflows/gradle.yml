@@ -1,5 +1,10 @@
-pull_request:
-  branches: [ master ]
+name: Java CI with Gradle
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 jobs:
   deploy_user:
     name: Push Docker image to Docker Hub
