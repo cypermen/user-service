@@ -13,9 +13,6 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
-      #Test container
-      - name: Docker ps
-        run: docker ps
       - name: CURL
         run: curl http://localhost:8081/users/health
       - name: Set up Python
