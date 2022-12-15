@@ -9,6 +9,7 @@ jobs:
   deploy_user:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
+    container: ubuntu
     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
@@ -17,13 +18,13 @@ jobs:
         run: docker build . --file Dockerfile -t riobener/user-service:latest
       #Test container
       - name: Run Docker Container
-        run: docker run -p 8081:8081 -d --name my_service riobener/user-service:latest
+        run: docker run -p 8081:8081 -d riobener/user-service:latest
       - name: Docker ps
         run: docker ps
       - name: sleep
         run: sleep 10
       - name: CURL
-        run: curl http://localhost:8081/health
+        run: curl http://ubuntu:8081/health
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
