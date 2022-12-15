@@ -19,6 +19,7 @@ repositories {
 }
 
 dependencies {
+	testImplementation("com.ninja-squad:springmockk:3.0.1")
 	implementation("io.micrometer:micrometer-registry-prometheus:1.10.2")
 	implementation("org.springframework.boot:spring-boot-starter-actuator:2.7.5")
 	implementation("org.springframework.boot:spring-boot-starter-jdbc")

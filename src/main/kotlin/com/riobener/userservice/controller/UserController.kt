@@ -11,8 +11,9 @@ import java.util.*
 @RequestMapping("/users")
 class UserController(
     private val userService: UserService,
-/*    private val tracer: Tracer,*/
 ) {
+    @GetMapping("/health")
+    fun checkHealth() = "All good"
 
     @PostMapping("/")
     fun saveUser(@RequestParam name: String, @RequestParam departmentId: String): JpaUser {
