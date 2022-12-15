@@ -9,12 +9,26 @@ jobs:
   deploy_user:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
+    container: riobener/user-service:latest
     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
-      #Build Image
-      - name: Build Docker Image
-        run: docker build . --file Dockerfile -t riobener/user-service:latest
+      #Test container
+      - name: Docker ps
+        run: docker ps
+      - name: CURL
+        run: curl http://localhost:8081/users/health
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - name: Install pytest
+        run: pip install pytest
+      - name: Install requests
+        run: pip install requests
+      - name: Run tests
+        run: pytest
+
       #Push image
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
