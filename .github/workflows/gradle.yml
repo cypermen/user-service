@@ -20,6 +20,8 @@ jobs:
         run: docker run -p 8081:8081 -d --name my_service riobener/user-service:latest
       - name: Docker ps
         run: docker ps
+      - name: CURL
+        run: curl http://localhost:8081/health
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
